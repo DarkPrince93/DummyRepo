@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>non-maven-ear</artifactId>
+	<packaging>ear</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.fca</groupId>
+			<artifactId>maven-project</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<finalName>emis</finalName>
+					<!-- <version>5</version> -->
+					<generatedDescriptorLocation>${basedir}/src/main/application/META-INF</generatedDescriptorLocation>
+					<modules>
+						<webModule>
+							<groupId>com.fca</groupId>
+							<artifactId>maven-project</artifactId>
+							<bundleFileName>emis.war</bundleFileName>
+							<contextRoot>/appname</contextRoot>
+						</webModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<parent>
+		<groupId>com.fca</groupId>
+		<artifactId>non-maven-pom</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../non-maven-pom</relativePath>
+	</parent>
+</project>
